@@ -12,6 +12,7 @@ export class LoaderService {
         BABYLON.SceneLoader.ImportMeshAsync("", "/assets/models/", 'scene.glb', scene).then((result) => {
             meshes = result.meshes[0];
             //scene.activeCamera.setTarget(meshes)
+            meshes.toLeftHanded();
             const ghostObject = meshes.getChildren()[0].clone("ghost");
             ghostObject.setEnabled(false);
             console.log('mesh loaded')

@@ -15,12 +15,12 @@ export class CameraService{
             "Camera",
             2.65,
             1.4,
-            isDeviceMobile ? 180 : 50,
+            isDeviceMobile ? 80 : 30,
             new BABYLON.Vector3(0, 0, 0),
             this.scene);
 
-        camera.lowerRadiusLimit = 40;
-        camera.upperRadiusLimit = isDeviceMobile ? 280 : 60;
+        camera.lowerRadiusLimit = 15;
+        camera.upperRadiusLimit = isDeviceMobile ? 60 : 40;
         camera.upperBetaLimit = Math.PI / 2.1;
         camera.attachControl(this.canvas, true);
 

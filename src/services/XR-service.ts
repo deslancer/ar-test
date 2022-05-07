@@ -26,10 +26,10 @@ export class XRService {
 			const gui_service = new GUIService( scene );
 			const btn_exit = gui_service.addBtnExit(xr);
 			const btn_place = gui_service.addBtnPlace(xrTest)
-			const btn_right = gui_service.addBtnRotateRight();
-			const btn_left = gui_service.addBtnRotateLeft();
+			//const btn_right = gui_service.addBtnRotateRight();
+			//const btn_left = gui_service.addBtnRotateLeft();
 			const gui_message = gui_service.addMessage();
-			let object = scene.getNodeByName( "Building" );
+			let object = scene.getNodeByName( "Sketchfab_model" );
 
 			xr.baseExperience.onStateChangedObservable.add( function ( state ) {
 				switch (state) {
@@ -41,8 +41,8 @@ export class XRService {
 					case BABYLON.WebXRState.IN_XR:
 						btn_exit.isVisible = true;
 						btn_place.isVisible = true;
-						btn_right.isVisible = true;
-						btn_left.isVisible = true;
+						//=/btn_right.isVisible = true;
+						//btn_left.isVisible = true;
 						gui_message.isVisible = true;
 						console.log( "in xr" )
 						break;
@@ -52,8 +52,8 @@ export class XRService {
 						object.scalingDeterminant = 1.0;
 						btn_exit.isVisible = false;
 						btn_place.isVisible = false;
-						btn_right.isVisible = false;
-						btn_left.isVisible = false;
+						//btn_right.isVisible = false;
+						//btn_left.isVisible = false;
 						gui_message.isVisible = false;
 						console.log( "exiting xr" )
 						break;
@@ -63,8 +63,8 @@ export class XRService {
 						object.scalingDeterminant = 1.0;
 						btn_exit.isVisible = false;
 						btn_place.isVisible = false;
-						btn_right.isVisible = false;
-						btn_left.isVisible = false;
+						//btn_right.isVisible = false;
+						//btn_left.isVisible = false;
 						gui_message.isVisible = false;
 						console.log( "not in  xr" )
 						break;

@@ -8,7 +8,7 @@ export class GUIService {
     private readonly scene: any;
     constructor(scene) {
         this.scene = scene;
-        this.model = scene.getNodeByName("Building");
+        this.model = scene.getNodeByName("Sketchfab_model");
         this.advancedDynamicTexture = GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI", true, scene);
     }
 
@@ -17,14 +17,14 @@ export class GUIService {
         const ghost = this.scene.getNodeByName("ghost");
         const advancedTexture = this.advancedDynamicTexture;
         const btn_place = GUI.Button.CreateSimpleButton("place", "Place!");
-        btn_place.width = "280px";
+        btn_place.width = "95%";
         btn_place.height = "120px";
-        btn_place.color = "rgb(0, 130, 195)";
+        btn_place.color = "rgb(255, 255, 255)";
         btn_place.cornerRadius = 20;
-        btn_place.background = "rgb(255, 234, 40)";
+        btn_place.background = "rgb(43, 42, 52)";
         btn_place.fontSize = "36px";
         btn_place.top = "-95px";
-        btn_place.left = "-50px";
+        btn_place.left = "-13px";
         btn_place.verticalAlignment = GUI.Control.VERTICAL_ALIGNMENT_BOTTOM;
         btn_place.horizontalAlignment = GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT;
         advancedTexture.addControl(btn_place);
@@ -32,7 +32,7 @@ export class GUIService {
             if (ghost.isEnabled()) {
                 model.setEnabled(true);
                 model.isVisible = true;
-                model.rotate(new BABYLON.Vector3(0,1,0), Math.PI, BABYLON.Space.LOCAL);
+                //model.rotate(new BABYLON.Vector3(0,0,1), Math.PI, BABYLON.Space.LOCAL);
                 model.position.x = ghost.position.x;
                 model.position.y = ghost.position.y;
                 model.position.z = ghost.position.z;
