@@ -23,7 +23,7 @@
             </div>
     </div>
 {/if}
-<a rel="ar" class="ar_ios_btn" style="display: {iosBtnDisplay};" href="/assets/models/Low_poly_house.usdz#custom=https://arproperty.vercel.app/ios_ar_banner.html?1&customHeight=large">
+<a rel="ar" class="ar_ios_btn" style="display: {iosBtnDisplay};" href="/assets/models/The_Hut_AR.usdz" >
     <img src="./assets/view.png" width="48px" alt="ar">
 </a>
 

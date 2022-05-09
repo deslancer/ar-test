@@ -13,7 +13,7 @@ export class CameraService{
         let isDeviceMobile = new DeviceIdentifierHelper().isMobile();
         const camera = new BABYLON.ArcRotateCamera(
             "Camera",
-            2.65,
+            2.15,
             1.4,
             isDeviceMobile ? 80 : 30,
             new BABYLON.Vector3(0, 0, 0),

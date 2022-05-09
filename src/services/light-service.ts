@@ -21,7 +21,7 @@ export class LightService {
         const hdrTexture = new BABYLON.CubeTexture.CreateFromPrefilteredData("./assets/textures/environment.env", this.scene);
         this.scene.environmentTexture = hdrTexture;
         hdrTexture.level = 1.0;
-        const hdrRotation = 277.5; // in degrees
+        const hdrRotation = 260; // in degrees
         hdrTexture.setReflectionTextureMatrix(BABYLON.Matrix.RotationY(BABYLON.Tools.ToRadians(hdrRotation)));
         return hdrTexture;
     }

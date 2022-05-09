@@ -12,13 +12,14 @@ export class LoaderService {
         BABYLON.SceneLoader.ImportMeshAsync("", "/assets/models/", 'scene.glb', scene).then((result) => {
             meshes = result.meshes[0];
             //scene.activeCamera.setTarget(meshes)
-            meshes.toLeftHanded();
+
             const ghostObject = meshes.getChildren()[0].clone("ghost");
             ghostObject.setEnabled(false);
-            console.log('mesh loaded')
-            const building = ghostObject.getChildren()
+
+            const building = ghostObject.getChildren();
+
             building.forEach((child)=>{
-                child.visibility = 0.25;
+                child.visibility = 0.35;
             })
             preloading.update(() => {
                 return false;

@@ -29,13 +29,14 @@ export class XRService {
 			//const btn_right = gui_service.addBtnRotateRight();
 			//const btn_left = gui_service.addBtnRotateLeft();
 			const gui_message = gui_service.addMessage();
-			let object = scene.getNodeByName( "Sketchfab_model" );
+			let object = scene.getNodeByName( "Building" );
 
 			xr.baseExperience.onStateChangedObservable.add( function ( state ) {
 				switch (state) {
 					case BABYLON.WebXRState.ENTERING_XR:
+						object.scalingDeterminant = 0.04;
 						object.setEnabled( false );
-						ghost.scalingDeterminant = 0.03;
+						ghost.scalingDeterminant = 0.04;
 						console.log( "entering xr" )
 						break;
 					case BABYLON.WebXRState.IN_XR:

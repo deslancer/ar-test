@@ -28,6 +28,8 @@ export const createScene = async ( canvas ) => {
 		scene.render();
 	} );
 
-	//scene.debugLayer.show();
+	/*scene.debugLayer.show({
+		embedMode: true
+	});*/
 	return scene;
 }

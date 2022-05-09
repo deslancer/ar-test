@@ -8,7 +8,7 @@ export class GUIService {
     private readonly scene: any;
     constructor(scene) {
         this.scene = scene;
-        this.model = scene.getNodeByName("Sketchfab_model");
+        this.model = scene.getNodeByName("Building");
         this.advancedDynamicTexture = GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI", true, scene);
     }
 
@@ -32,12 +32,11 @@ export class GUIService {
             if (ghost.isEnabled()) {
                 model.setEnabled(true);
                 model.isVisible = true;
-                //model.rotate(new BABYLON.Vector3(0,0,1), Math.PI, BABYLON.Space.LOCAL);
+                //model.rotate(new BABYLON.Vector3(0,1,0), Math.PI, BABYLON.Space.LOCAL);
                 model.position.x = ghost.position.x;
                 model.position.y = ghost.position.y;
                 model.position.z = ghost.position.z;
-
-                model.scalingDeterminant = 0.03;
+                //model.scalingDeterminant = 0.03;
 
                 ghost.setEnabled(false);
                 xrTest.onHitTestResultObservable.clear();
