@@ -18,11 +18,11 @@ export class LightService {
     }
 
     createHDRILight(){
-        const hdrTexture = new BABYLON.CubeTexture.CreateFromPrefilteredData("./assets/textures/environment.env", this.scene);
+        const hdrTexture = new BABYLON.CubeTexture.CreateFromPrefilteredData("./assets/textures/environment1.env", this.scene);
         this.scene.environmentTexture = hdrTexture;
         hdrTexture.level = 1.0;
-        const hdrRotation = 260; // in degrees
-        hdrTexture.setReflectionTextureMatrix(BABYLON.Matrix.RotationY(BABYLON.Tools.ToRadians(hdrRotation)));
+
+        hdrTexture.setReflectionTextureMatrix(BABYLON.Matrix.RotationY(3.20));
         return hdrTexture;
     }
 }
