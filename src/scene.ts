@@ -11,7 +11,7 @@ export const createScene = async ( canvas ) => {
 	const engine = new EngineService( canvas ).getEngine();
 	const scene = new BABYLON.Scene( engine );
 	scene.clearColor = new BABYLON.Color4( 1.0, 1.0, 1.0, 1.0 ).toLinearSpace();
-	new CameraService( canvas, scene ).createPerspectiveCam();
+	const camera = new CameraService( canvas, scene ).createPerspectiveCam();
 
 	const lightService = new LightService( scene );
 	const loaderService = new LoaderService();
@@ -22,7 +22,6 @@ export const createScene = async ( canvas ) => {
 	global_scene.update( () => {
 		return scene;
 	} );
-
 
 	engine.runRenderLoop( () => {
 		scene.render();

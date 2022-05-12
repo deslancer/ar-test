@@ -9,7 +9,7 @@ export class LoaderService {
         });
         let meshes;
 
-        BABYLON.SceneLoader.ImportMeshAsync("", "/assets/models/", 'scene.glb', scene).then((result) => {
+        BABYLON.SceneLoader.ImportMeshAsync("", "/assets/models/", 'scene2.glb', scene).then((result) => {
             meshes = result.meshes[0];
             //scene.activeCamera.setTarget(meshes)
 
