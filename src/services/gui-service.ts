@@ -32,11 +32,11 @@ export class GUIService {
             if (ghost.isEnabled()) {
                 model.setEnabled(true);
                 model.isVisible = true;
-                //model.rotate(new BABYLON.Vector3(0,1,0), Math.PI, BABYLON.Space.LOCAL);
+                model.scalingDeterminant = 0.045;
                 model.position.x = ghost.position.x;
                 model.position.y = ghost.position.y;
                 model.position.z = ghost.position.z;
-                //model.scalingDeterminant = 0.03;
+
 
                 ghost.setEnabled(false);
                 xrTest.onHitTestResultObservable.clear();

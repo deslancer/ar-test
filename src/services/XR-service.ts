@@ -34,31 +34,28 @@ export class XRService {
 			xr.baseExperience.onStateChangedObservable.add( function ( state ) {
 				switch (state) {
 					case BABYLON.WebXRState.ENTERING_XR:
-						object.scalingDeterminant = 0.04;
 						object.setEnabled( false );
-						ghost.scalingDeterminant = 0.04;
+						ghost.scalingDeterminant = 0.045;
 						console.log( "entering xr" )
 						break;
 					case BABYLON.WebXRState.IN_XR:
 						btn_exit.isVisible = true;
 						btn_place.isVisible = true;
-						//=/btn_right.isVisible = true;
-						//btn_left.isVisible = true;
 						gui_message.isVisible = true;
 						console.log( "in xr" )
 						break;
 					case BABYLON.WebXRState.EXITING_XR:
+						ghost.position = new BABYLON.Vector3(0, 0, 0);
 						object.setEnabled( true );
 						object.position = new BABYLON.Vector3(0, 0, 0);
 						object.scalingDeterminant = 1.0;
 						btn_exit.isVisible = false;
 						btn_place.isVisible = false;
-						//btn_right.isVisible = false;
-						//btn_left.isVisible = false;
 						gui_message.isVisible = false;
 						console.log( "exiting xr" )
 						break;
 					case BABYLON.WebXRState.NOT_IN_XR:
+						ghost.position = new BABYLON.Vector3(0, 0, 0);
 						object.setEnabled( true );
 						object.position = new BABYLON.Vector3(0, 0, 0);
 						object.scalingDeterminant = 1.0;
