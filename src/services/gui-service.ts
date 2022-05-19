@@ -117,7 +117,7 @@ export class GUIService {
         const text1 = new GUI.TextBlock("text3");
         text1.fontFamily = "Helvetica";
         text1.textWrapping = true;
-        text1.text = 'Для лучшего результата найдите свободную площадку и медленно перемещайте телефон пока не появится ghost объект, размещайте объект на расстоянии не менее 2х метров от вас';
+        text1.text = 'Find a free area and slowly move the phone until a ghost object appears. Then tap the Place button.';
         text1.color = "white";
         text1.fontSize = "32px";
         text1.height = "400px"
