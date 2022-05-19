@@ -30,15 +30,15 @@ export class GUIService {
         advancedTexture.addControl(btn_place);
         btn_place.onPointerDownObservable.add(function () {
             if (ghost.isEnabled()) {
-                model.setEnabled(true);
-                model.isVisible = true;
-                model.scalingDeterminant = 0.045;
-                model.position.x = ghost.position.x;
-                model.position.y = ghost.position.y;
-                model.position.z = ghost.position.z;
+                //model.setEnabled(true);
+               // model.isVisible = true;
+               // model.scalingDeterminant = 0.045;
+                //model.position.x = ghost.position.x;
+                //model.position.y = ghost.position.y;
+                //model.position.z = ghost.position.z;
 
 
-                ghost.setEnabled(false);
+                //ghost.setEnabled(false);
                 xrTest.onHitTestResultObservable.clear();
                 advancedTexture.getControlByName("message").isVisible = false;
             }
@@ -66,6 +66,7 @@ export class GUIService {
         });
         return button_exit;
     }
+
     addBtnRotateRight(){
         const model = this.model;
         const btn_right = GUI.Button.CreateImageOnlyButton("btn_right", "assets/rotate_right.png");
@@ -121,7 +122,7 @@ export class GUIService {
         const text1 = new GUI.TextBlock("text3");
         text1.fontFamily = "Helvetica";
         text1.textWrapping = true;
-        text1.text = 'Для лучшего результата найдите свободную площадку и медленно перемещайте телефон пока не появится ghost объект, размещайте объект на расстоянии не менее 2х метров от вас';
+        text1.text = 'Find a free area and slowly move the phone until a ghost object appears. Then tap the Place button.';
         text1.color = "white";
         text1.fontSize = "32px";
         text1.height = "400px"
