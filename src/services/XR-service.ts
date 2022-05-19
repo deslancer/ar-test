@@ -11,6 +11,7 @@ export class XRService {
 			optionalFeatures: true,
 		} ).then( ( xr ) => {
 			const ghost = scene.getNodeByName("ghost");
+			ghost.setEnabled(false)
 			const featuresManager = xr.baseExperience.featuresManager;
 			const xrTest = featuresManager.enableFeature( BABYLON.WebXRHitTest, 'latest' ) as BABYLON.WebXRHitTest;
 			let hitTestResults;
@@ -26,8 +27,7 @@ export class XRService {
 			const gui_service = new GUIService( scene );
 			const btn_exit = gui_service.addBtnExit(xr);
 			const btn_place = gui_service.addBtnPlace(xrTest)
-			//const btn_right = gui_service.addBtnRotateRight();
-			//const btn_left = gui_service.addBtnRotateLeft();
+
 			const gui_message = gui_service.addMessage();
 			let object = scene.getNodeByName( "Building" );
 
@@ -35,7 +35,11 @@ export class XRService {
 				switch (state) {
 					case BABYLON.WebXRState.ENTERING_XR:
 						object.setEnabled( false );
+						ghost.getChildren('', false).forEach((child)=>{
+							child.visibility = 0.35;
+						})
 						ghost.scalingDeterminant = 0.045;
+						ghost.rotate(new BABYLON.Vector3(0, 1, 0), Math.PI * 2, BABYLON.Space.LOCAL)
 						console.log( "entering xr" )
 						break;
 					case BABYLON.WebXRState.IN_XR:
@@ -45,24 +49,18 @@ export class XRService {
 						console.log( "in xr" )
 						break;
 					case BABYLON.WebXRState.EXITING_XR:
-						ghost.position = new BABYLON.Vector3(0, 0, 0);
+						ghost.setEnabled( false );
 						object.setEnabled( true );
-						object.position = new BABYLON.Vector3(0, 0, 0);
-						object.scalingDeterminant = 1.0;
 						btn_exit.isVisible = false;
 						btn_place.isVisible = false;
 						gui_message.isVisible = false;
 						console.log( "exiting xr" )
 						break;
 					case BABYLON.WebXRState.NOT_IN_XR:
-						ghost.position = new BABYLON.Vector3(0, 0, 0);
+						ghost.setEnabled( false );
 						object.setEnabled( true );
-						object.position = new BABYLON.Vector3(0, 0, 0);
-						object.scalingDeterminant = 1.0;
 						btn_exit.isVisible = false;
 						btn_place.isVisible = false;
-						//btn_right.isVisible = false;
-						//btn_left.isVisible = false;
 						gui_message.isVisible = false;
 						console.log( "not in  xr" )
 						break;
