@@ -26,8 +26,15 @@ export const createScene = async ( canvas ) => {
 	engine.runRenderLoop( () => {
 		scene.render();
 	} );
-
-	/*scene.debugLayer.show({
+	const pipeline = new BABYLON.DefaultRenderingPipeline(
+		"defaultPipeline", // The name of the pipeline
+		true, // Do you want the pipeline to use HDR texture?
+		scene, // The scene instance
+		[camera] // The list of cameras to be attached to
+	);
+	pipeline.fxaaEnabled = true;
+	pipeline.samples = 4;
+	/*await scene.debugLayer.show({
 		embedMode: true
 	});*/
 	return scene;

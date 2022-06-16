@@ -30,15 +30,11 @@ export class GUIService {
         advancedTexture.addControl(btn_place);
         btn_place.onPointerDownObservable.add(function () {
             if (ghost.isEnabled()) {
-                //model.setEnabled(true);
-               // model.isVisible = true;
-               // model.scalingDeterminant = 0.045;
-                //model.position.x = ghost.position.x;
-                //model.position.y = ghost.position.y;
-                //model.position.z = ghost.position.z;
 
+                ghost.getChildren( '', false ).forEach( ( child ) => {
+                    child.visibility = 1.0;
+                } )
 
-                //ghost.setEnabled(false);
                 xrTest.onHitTestResultObservable.clear();
                 advancedTexture.getControlByName("message").isVisible = false;
             }
@@ -66,7 +62,6 @@ export class GUIService {
         });
         return button_exit;
     }
-
     addBtnRotateRight(){
         const model = this.model;
         const btn_right = GUI.Button.CreateImageOnlyButton("btn_right", "assets/rotate_right.png");

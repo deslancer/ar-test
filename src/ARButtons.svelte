@@ -23,7 +23,7 @@
             </div>
     </div>
 {/if}
-<a rel="ar" class="ar_ios_btn" style="display: {iosBtnDisplay};" href="./assets/models/The_Hut_AR.usdz" >
+<a rel="ar" class="ar_ios_btn" style="display: {iosBtnDisplay};" href="./assets/models/Type_A_Building_AR.usdz" >
     <img src="./assets/view.png" width="48px" alt="ar">
 </a>
 

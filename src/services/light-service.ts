@@ -18,7 +18,7 @@ export class LightService {
     }
 
     createHDRILight(){
-        const hdrTexture = new BABYLON.CubeTexture.CreateFromPrefilteredData("./assets/textures/environment1.env", this.scene);
+        const hdrTexture = new BABYLON.CubeTexture.CreateFromPrefilteredData("./assets/textures/environment.env", this.scene);
         this.scene.environmentTexture = hdrTexture;
         hdrTexture.level = 1.0;
 

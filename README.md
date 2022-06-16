@@ -1,4 +1,4 @@
-# Tilal AR
+# AR-test
 
 This project template incorporates [Svelte](https://svelte.dev) with [Babylon.js](https://www.babylonjs.com/).
 
