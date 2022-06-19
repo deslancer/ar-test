@@ -15,4 +15,25 @@ canvas {
 	right: 20px;
 }
 
-
+.right-bottom-nav {
+	position: absolute;
+	bottom: 48px;
+	right: 48px;
+}
+.icons_container {
+	display: flex;
+	flex-direction: column;
+}
+.icons_container > p {
+	cursor: pointer;
+	padding: 18px;
+	border-radius: 50%;
+	transition: all 250ms ease-in-out;
+}
+.my-4 {
+	margin-top: 1.5rem!important;
+	margin-bottom: 1.5rem!important;
+}
+.img_icon {
+	max-width: 40px;
+}

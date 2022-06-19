@@ -5,16 +5,19 @@ import { EngineService } from './services/engine-service';
 import { CameraService } from './services/camera-service';
 import { LightService } from './services/light-service';
 import { LoaderService } from './services/loader-service';
+import { GUIService } from "./services/gui-service";
 import { global_scene } from './services/store';
 
 export const createScene = async ( canvas ) => {
 	const engine = new EngineService( canvas ).getEngine();
 	const scene = new BABYLON.Scene( engine );
-	scene.clearColor = new BABYLON.Color4( 1.0, 1.0, 1.0, 1.0 ).toLinearSpace();
+	scene.clearColor = new BABYLON.Color4( 0.37, 0.37, 0.37, 1.0 ).toLinearSpace();
 	const camera = new CameraService( canvas, scene ).createPerspectiveCam();
 
 	const lightService = new LightService( scene );
 	const loaderService = new LoaderService();
+
+	const guiService = new GUIService(scene);
 
 	lightService.createHDRILight();
 	loaderService.loadModel( scene );
@@ -34,6 +37,13 @@ export const createScene = async ( canvas ) => {
 	);
 	pipeline.fxaaEnabled = true;
 	pipeline.samples = 4;
+	pipeline.imageProcessing.contrast = 1.5;
+	/*guiService.addSlider("camera contrast", function(value) {
+		pipeline.imageProcessing.contrast = value;
+	}, pipeline.imageProcessing.contrast, 0, 4, null, null);
+	guiService.addColorPicker("Background Color", function(value) {
+		scene.clearColor = value;
+	}, scene.clearColor, "0", null);*/
 	/*await scene.debugLayer.show({
 		embedMode: true
 	});*/

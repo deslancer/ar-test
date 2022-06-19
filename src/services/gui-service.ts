@@ -6,10 +6,18 @@ export class GUIService {
     private readonly advancedDynamicTexture: any;
     private readonly model: any;
     private readonly scene: any;
+    private readonly leftPanel: any;
     constructor(scene) {
         this.scene = scene;
         this.model = scene.getNodeByName("Building");
         this.advancedDynamicTexture = GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI", true, scene);
+        this.leftPanel = new GUI.StackPanel();
+        this.leftPanel.width = "300px";
+        this.leftPanel.isVertical = true;
+        this.leftPanel.paddingRight = "20px";
+        this.leftPanel.horizontalAlignment = GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
+        this.leftPanel.verticalAlignment = GUI.Control.VERTICAL_ALIGNMENT_CENTER;
+        this.advancedDynamicTexture.addControl(this.leftPanel);
     }
 
     addBtnPlace(xrTest){
@@ -126,6 +134,71 @@ export class GUIService {
         text1.paddingRight = "10px";
         XRPanel.addControl(text1);
         return rectangle;
+    }
+     addSlider (text, func, initialValue, min, max, left, panel) {
+        if(!panel){
+            panel = this.leftPanel
+        }
+
+        const header = new GUI.TextBlock();
+        header.text = text;
+        header.height = "30px";
+        header.color = "white";
+        header.textHorizontalAlignment = GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
+        panel.addControl(header);
+        if (left) {
+            header.left = left;
+        }
+
+        const slider = new GUI.Slider();
+        slider.minimum = min;
+        slider.maximum = max;
+        slider.value = initialValue;
+        slider.height = "20px";
+        slider.color = "green";
+        slider.background = "white";
+        slider.onValueChangedObservable.add(function(value) {
+            document.getElementById('contrast').innerHTML = `Current contrast - ${value}`;
+            func(value);
+        });
+
+        if (left) {
+            slider.paddingLeft = left;
+        }
+
+        panel.addControl(slider);
+    }
+    addColorPicker(text, func, initialValue, left, panel) {
+        if(!panel){
+            panel = this.leftPanel
+        }
+        const header = new GUI.TextBlock();
+        header.text = text;
+        header.height = "30px";
+        header.color = "white";
+        header.textHorizontalAlignment = GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
+        panel.addControl(header);
+
+        if (left) {
+            header.left = left;
+        }
+
+        const colorPicker = new GUI.ColorPicker();
+        colorPicker.value = initialValue;
+        colorPicker.size = "250px";
+        colorPicker.horizontalAlignment = GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
+        colorPicker.onValueChangedObservable.add(function(value) {
+
+            document.getElementById('color_bg').innerHTML = `Background Color - ${value}`;
+
+            func(value);
+        });
+
+        if (left) {
+            colorPicker.left = left;
+        }
+
+        panel.addControl(colorPicker);
     }
 }
 

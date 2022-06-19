@@ -10,16 +10,17 @@ export class LoaderService {
         let meshes;
         let url = new URL(window.location.href);
         let searchParams = new URLSearchParams(url.search);
-        let filename = searchParams.get('building');
+        let filename = searchParams.get('file');
+        const defaultFile = `type_a`;
 
-        BABYLON.SceneLoader.ImportMeshAsync("", "./assets/models/", `type_a.glb`, scene).then((result) => {
+        BABYLON.SceneLoader.ImportMeshAsync("", "./assets/models/", `${filename ? filename : defaultFile}.glb`, scene).then((result) => {
             meshes = result.meshes[0];
             const buildingNode = scene.getNodeByName('Building')
             scene.activeCamera.setTarget(buildingNode.getAbsolutePosition())
-            const buildingMaterial = scene.getMaterialByName('Type_A_Building');
-            const innerWallsMaterial = scene.getMaterialByName('Type_A_Inner_Walls');
-            const stairsMaterial = scene.getMaterialByName('Type_A_Details');
-            const detailsMaterial = scene.getMaterialByName('Type_A_Tree');
+            const buildingMaterial = scene.getMaterialByName('Building');
+            const innerWallsMaterial = scene.getMaterialByName('Inner_Walls');
+            const stairsMaterial = scene.getMaterialByName('Details');
+            const detailsMaterial = scene.getMaterialByName('Tree');
             const windowGlass = scene.getMaterialByName('Window_Glass');
 
             buildingMaterial.unlit = true;

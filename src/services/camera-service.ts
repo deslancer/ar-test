@@ -13,13 +13,13 @@ export class CameraService{
         let isDeviceMobile = new DeviceIdentifierHelper().isMobile();
         const camera = new BABYLON.ArcRotateCamera(
             "Camera",
-            3.556,
+            2.156,
             1.4,
             isDeviceMobile ? 80 : 35,
             new BABYLON.Vector3(0, 0, 0),
             this.scene);
 
-        camera.lowerRadiusLimit = 15;
+        camera.lowerRadiusLimit = 25;
         camera.upperRadiusLimit = isDeviceMobile ? 60 : 45;
         camera.upperBetaLimit = Math.PI / 2.1;
         camera.attachControl(this.canvas, true);

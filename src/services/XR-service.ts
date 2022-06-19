@@ -38,7 +38,7 @@ export class XRService {
 						ghost.getChildren('', false).forEach((child)=>{
 							child.visibility = 0.35;
 						})
-						ghost.rotate(new BABYLON.Vector3(0, 1, 0), Math.PI * 2, BABYLON.Space.LOCAL)
+						ghost.rotate(new BABYLON.Vector3(0, 1, 0), Math.PI, BABYLON.Space.LOCAL)
 						ghost.scalingDeterminant = 0.045;
 
 						console.log( "entering xr" )

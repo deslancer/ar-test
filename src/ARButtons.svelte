@@ -14,6 +14,12 @@
 	if (isDeviceIOS) {
 		iosBtnDisplay = 'block';
     }
+
+    let url = new URL(window.location.href);
+    let searchParams = new URLSearchParams(url.search);
+    let filename = searchParams.get('file');
+    const defaultFile = `type_a`;
+    let href = `./assets/models/${filename ? filename : defaultFile}.usdz`;
 </script>
 
 {#if (isDeviceMobile && !isDeviceIOS)}
@@ -23,7 +29,7 @@
             </div>
     </div>
 {/if}
-<a rel="ar" class="ar_ios_btn" style="display: {iosBtnDisplay};" href="./assets/models/Type_A_Building_AR.usdz" >
+<a rel="ar" class="ar_ios_btn" style="display: {iosBtnDisplay};" {href} >
     <img src="./assets/view.png" width="48px" alt="ar">
 </a>
 
